@@ -1,5 +1,9 @@
+// Form with get method handling
+
 var express = require('express');
 var app = express();
+
+var PORT = 8000;
 
 app.get('/', function (req, res) {
   var form = '<form method="get"><input name="name" /><input name="surname" /><input type="submit" /></form>';
@@ -8,9 +12,6 @@ app.get('/', function (req, res) {
   res.send(form + queryJSON);
 });
 
-var server = app.listen(8000, function () {
-  var host = server.address().address;
-  var port = server.address().port;
-
-  console.log('Server was running on: ', host, port);
+var server = app.listen(PORT, function () {
+  console.log('Server was running on: ', PORT);
 });
