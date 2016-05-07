@@ -1,7 +1,7 @@
 // Post form example
 
-var bodyParser = require('body-parser');
 var express = require('express');
+var bodyParser = require('body-parser');
 
 var app = express();
 var PORT = 8000;
@@ -14,24 +14,24 @@ app.use(bodyParser.json());
 
 // Main page handler
 app.get('/', function (req, res) {
-  res.send('<form method="post"><input name="name" /><input name="surname" /><input type="submit" /></form>');
+  res.send( getForm() );
 });
 
 // Post query handler
 app.post('/', function (req, res) {
-  var html = '<form method="post">'+
-    '<input value="'+
-      req.body.name +
-      '" name="name" />'+
-    '<input value="'+
-      req.body.surname +
-      '" name="surname" />'+
-    '<input type="submit" />'+
-    '</form>';
+  var form = getForm(req.body.name, req.body.surname);
 
-  res.send( html + 'Thank you for your personal data sending!');
+  res.send(form + 'Thank you for your personal data sending!');
 });
 
-var server = app.listen(PORT, function () {
+var getForm = function (name, surname) {
+  return '<form action="/" method="post">'+
+    '<input value="'+ (name || '') +'" name="name" />'+
+    '<input value="'+ (surname || '') +'" name="surname" />'+
+    '<input type="submit" />'+
+  '</form>';
+};
+
+app.listen(PORT, function () {
   console.log('Server was running on: ', PORT);
 });

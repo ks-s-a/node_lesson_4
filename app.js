@@ -15,6 +15,6 @@ app.get('/admin', function (req, res) {
   res.send('This is an admin panel.');
 });
 
-var server = app.listen(PORT, function () {
-  console.log('Server was running on: ', PORT);
+app.listen(PORT, function () {
+  console.log('Server is launched on: ', PORT);
 });

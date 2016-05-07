@@ -29,6 +29,6 @@ app.get('/worker', function (req, res) {
   });
 });
 
-var server = app.listen(PORT, function () {
+app.listen(PORT, function () {
   console.log('Server was running on: ', PORT);
 });
