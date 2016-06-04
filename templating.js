@@ -2,9 +2,7 @@
 
 var express = require('express');
 var template = require('consolidate').handlebars;
-
 var app = express();
-var PORT = 8000;
 
 // Define a templating mechanism
 app.engine('hbs', template);
@@ -29,6 +27,6 @@ app.get('/worker', function (req, res) {
   });
 });
 
-app.listen(PORT, function () {
-  console.log('Server was running on: ', PORT);
+app.listen(8000, function () {
+  console.log('Server was running on: ', 8000);
 });

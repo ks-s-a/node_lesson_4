@@ -4,13 +4,12 @@ var express = require('express');
 var bodyParser = require('body-parser');
 
 var app = express();
-var PORT = 8000;
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use( bodyParser.urlencoded({ extended: false }) );
 
 // parse application/json
-app.use(bodyParser.json());
+app.use( bodyParser.json() );
 
 // Main page handler
 app.get('/', function (req, res) {
@@ -32,6 +31,6 @@ var getForm = function (name, surname) {
   '</form>';
 };
 
-app.listen(PORT, function () {
-  console.log('Server was running on: ', PORT);
+app.listen(8000, function () {
+  console.log('Server was running on: ', 8000);
 });
