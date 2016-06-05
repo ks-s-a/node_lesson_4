@@ -1,28 +1,28 @@
-// Post form example
+// Обработка форм с помощью ExpressJS
 
 var express = require('express');
 var bodyParser = require('body-parser');
 
 var app = express();
 
-// parse application/x-www-form-urlencoded
+// Разбираем application/x-www-form-urlencoded
 app.use( bodyParser.urlencoded({ extended: false }) );
 
-// parse application/json
+// Разбираем application/json
 app.use( bodyParser.json() );
 
-// Main page handler
 app.get('/', function (req, res) {
   res.send( getForm() );
 });
 
-// Post query handler
+// Обработка POST запроса
 app.post('/', function (req, res) {
   var form = getForm(req.body.name, req.body.surname);
 
   res.send(form + 'Thank you for your personal data sending!');
 });
 
+// Функция для получения разметки формы
 var getForm = function (name, surname) {
   return '<form action="/" method="post">'+
     '<input value="'+ (name || '') +'" name="name" />'+

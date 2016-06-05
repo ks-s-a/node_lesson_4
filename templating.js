@@ -1,25 +1,24 @@
-// Templating example with handlebars usage
+// Использование шаблонизатора на примере handlebars
 
 var express = require('express');
 var template = require('consolidate').handlebars;
 var app = express();
 
-// Define a templating mechanism
+// Определяем обработчик шаблонов
 app.engine('hbs', template);
 
-// Set express variables for fast template handling
+// Устанавливаем переменные для обработки шаблонов
 app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
 
-// Main page
 app.get('/', function (req, res) {
+  // Рендеринг шаблона
   res.render('index', {
     moment: new Date(),
     action: ['спать'],
   });
 });
 
-// Additional page
 app.get('/worker', function (req, res) {
   res.render('index', {
     moment: new Date(),
