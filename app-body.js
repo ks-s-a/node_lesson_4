@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // Разбираем application/x-www-form-urlencoded
-app.use( bodyParser.urlencoded({ extended: false }) );
+app.use( bodyParser.urlencoded() );
 
 // Разбираем application/json
 app.use( bodyParser.json() );
@@ -18,7 +18,6 @@ app.get('/', function (req, res) {
 // Обработка POST запроса
 app.post('/', function (req, res) {
   var form = getForm(req.body.name, req.body.surname);
-
   res.send(form + 'Thank you for your personal data sending!');
 });
 
